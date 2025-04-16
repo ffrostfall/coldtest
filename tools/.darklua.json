@@ -1,0 +1,55 @@
+{
+	"generator": "readable",
+
+	"bundle": {
+		"require_mode": "path",
+		"excludes": ["@lune/**"]
+	},
+
+	"rules": [
+		{
+			"rule": "append_text_comment",
+			"text": "!native",
+			"location": "start"
+		},
+		{
+			"rule": "inject_global_value",
+			"identifier": "__BUILD_VERSION",
+			"env": "BUILD_VERSION"
+		},
+		{
+			"rule": "inject_global_value",
+			"identifier": "__BUILD_TYPE",
+			"env": "BUILD_TYPE"
+		},
+		{
+			"rule": "inject_global_value",
+			"identifier": "__BUILD_OS",
+			"env": "BUILD_OS"
+		},
+		{
+			"rule": "inject_global_value",
+			"identifier": "__BUILD_ARCH",
+			"env": "BUILD_ARCH"
+		},
+
+		{
+			"rule": "compute_expression"
+		},
+		{
+			"rule": "remove_unused_if_branch"
+		},
+		{
+			"rule": "remove_unused_while"
+		},
+		{
+			"rule": "remove_unused_variable"
+		},
+		{
+			"rule": "remove_empty_do"
+		},
+		{
+			"rule": "filter_after_early_return"
+		}
+	]
+}

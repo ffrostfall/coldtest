@@ -1,0 +1,8 @@
+{
+	"luau-lsp.platform.type": "standard",
+	"luau-lsp.fflags.enableNewSolver": true,
+	"luau-lsp.completion.imports.suggestRequires": false,
+
+	"luau-lsp.ignoreGlobs": ["build/**"],
+	"luau-lsp.types.definitionFiles": ["typedefs/_G.d.luau"]
+}

@@ -1,0 +1,10 @@
+{
+	"languageMode": "strict",
+	"aliases": {
+		"lune": "~/.lune/.typedefs/0.8.9",
+		"coldtest": "~/.coldtest/typedefs/0.1.0",
+		"src": "src",
+		"utils": "utils",
+		"tools": "tools"
+	}
+}
