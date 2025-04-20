@@ -66,6 +66,7 @@ end
 local function build(build_type: BuildType)
 	local project_conf = get_project_conf()
 
+	fs_utils.remove_dir("build")
 	fs_utils.write_dir("build")
 	fs_utils.write_dir("build/tmp")
 
@@ -84,18 +85,28 @@ local function build(build_type: BuildType)
 				arch = target_arch,
 			} :: BuildTarget
 
-			local vers_string = string.gsub(project_conf.version, "%.", "-")
-
 			process.env["BUILD_ARCH"] = target_arch
 			process.env["BUILD_OS"] = target_os
 
-			local output_file_name = `coldtest-{build_type}-v{vers_string}`
+			local output_file_name = "coldtest"
+
+			if build_type == "debug" then
+				output_file_name ..= "-debug"
+			end
 
 			exec_cmd(
 				`darklua process src/init.luau build/tmp/{output_file_name}_{concat_target(target)}.luau --config=tools/.darklua.json`
 			)
 			build_executable(output_file_name, target)
 		end
+	end
+
+	if build_type == "release" then
+		fs_utils.remove_dir("build/tmp")
+	end
+
+	if table.find(process.args, "--bundle") then
+		exec_cmd(`tar acvf release.zip build`)
 	end
 end
 

@@ -1,6 +1,7 @@
 local user_files = require("./user_files")
 local logging = require("@utils/logging")
 local bench = require("./commands/bench")
+local test = require("./commands/test")
 
 local setup_call = user_files.setup()
 
